@@ -28,7 +28,7 @@ namespace Demo1.Tests
 
     internal class FlattenTestContext
     {
-        public readonly string[] _buisnessTypes = new[] { "Business", "Private" };
+        private readonly string[] _buisnessTypes = new[] { "Business", "Private" };
         public List<DemoSource.Person> GetTestPersons()
         {
             var testEmails = new Faker<DemoSource.EmailAdress>("pl")
