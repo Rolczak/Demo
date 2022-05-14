@@ -13,7 +13,7 @@ namespace Demo2.Tests
         }
 
         [Fact]
-        public void MatchPersonToAccount()
+        public void MatchPersonToAccountShouldReturnValidData()
         {
             Randomizer.Seed = new Random(10);
             var watch = new Stopwatch();
@@ -71,11 +71,8 @@ namespace Demo2.Tests
 
             var groups = testGroups.Generate(40);
 
-            var randomEmail = new Faker().PickRandom(accounts.Select(x => x.EmailAdress));
-            var serchingEmails = Enumerable.Range(numberOfEmailsToSearch, numberOfEmailsToSearch)
-                                    .Select(_ => randomEmail.Email)
-                                    .ToList();
-            
+            var serchingEmails = new Faker().Random.ListItems(accounts.Select(x => x.EmailAdress.Email).ToList(), numberOfEmailsToSearch);
+
             return (groups, accounts, serchingEmails);
         }
     }
